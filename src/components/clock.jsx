@@ -5,9 +5,10 @@ import {Panel, Icon} from 'amazeui-react';
 import {FmkCtl} from 'components/FmkCtl';
 import {Fmk} from 'components/Fmk';
 import {FmkStore} from 'components/FmkStore';
+import {FmkComponent} from 'components/FmkComponent';
 var moment = require('moment');
 
-class Clock extends Component {
+class Clock extends FmkComponent {
   render() {
     var panelHeader = (
       <Icon icon="clock-o">当前时间</Icon>
@@ -16,9 +17,10 @@ class Clock extends Component {
       <Panel header={panelHeader} style={this.props.style}>
         <a onClick={this.props.reload}>reload</a><br/>
         <a onClick={this.props.stopHandler}>stop</a>
-        <h1>{this.props.clock.time}</h1>
+        <h1>{this.props.myClock.time}</h1>
         <p>
-          {this.props.children}
+          {this.props.children}<br/>
+        这是n的值：{this.props.n}
         </p>
       </Panel>
     );
@@ -55,8 +57,8 @@ class ClockStore extends FmkStore {
 
 export class ClockCtl extends FmkCtl {
   bindStoreEvent(binder) {
-    this.clock = Fmk.store(ClockStore);
-    binder('clock', this.clock);
+    this.clock = Fmk.store(ClockStore, false);
+    binder('clock_XxXxxxxxXXXXxxxx', this.clock);
   }
 
   onShow() {
@@ -73,12 +75,12 @@ export class ClockCtl extends FmkCtl {
 
   reload = () =>{
     console.log("Fmk.act({type:'clock$reload'});");
-    Fmk.act({type:'clock$reload'});
+    Fmk.act({type:'clock$reload', name:'xxx',gender:'male'});
   }
 
   render() {
     return (
-      <Clock clock={this.state.clock} style={this.props.style} stopHandler={this.stop} reload={this.reload}>
+      <Clock {...this.props} myClock={this.state.clock_XxXxxxxxXXXXxxxx} stopHandler={this.stop} reload={this.reload}>
         {this.props.children}
       </Clock>
     );

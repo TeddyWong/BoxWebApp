@@ -10,12 +10,14 @@
   "scripts": {
     "start": "clear\nnode server.js",
     "lint": "eslint src",
-    "build": "webpack --colors"
+    "build": "webpack --colors",
+    "cp": "clear\nnode server_cp.js"
   },
   "dependencies": {
     "amazeui-react": "^1.0.1",
     "flux": "^2.1.1",
     "moment": "^2.11.2",
+    "qrcode.react": "^0.6.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-router": "^2.0.0",

@@ -1,5 +1,5 @@
 'use strict';
-import React, {Component} from 'react';
+import React from 'react';
 import {Link} from 'react-router';
 import {
   Grid,
@@ -9,12 +9,13 @@ import {
   Header,
   Icon
 } from 'amazeui-react';
+import {FmkComponent} from 'components/FmkComponent';
+import {LogoutCtl} from 'components/Logout';
 
-export class App extends Component {
-
+export class App extends FmkComponent {
   render() {
     var headerProps = {
-      title: 'BoxWebApp Demo',
+      title: <div>加载中</div>,
       link: '#title-link',
       data: {
         left: [
@@ -37,7 +38,14 @@ export class App extends Component {
 
     return (
       <div>
-        <Header {...headerProps}/>
+        <Grid >
+          <Col sm={11}>
+            <Header {...headerProps}/>
+          </Col>
+          <Col sm={1}>
+            <LogoutCtl/>
+          </Col>
+        </Grid>
         <Grid>
           <Col sm={2}>
             <List>

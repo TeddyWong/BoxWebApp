@@ -3,8 +3,9 @@ import React, {Component} from 'react';
 import {Link} from 'react-router';
 import {Icon, Panel, AvgGrid, Button, Input} from 'amazeui-react';
 import {Fmk} from 'components/Fmk';
+import {FmkComponent} from 'components/FmkComponent';
 
-export class News extends Component {
+export class News extends FmkComponent {
   render() {
     var footer = (
       <div style={{

@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {Fmk} from 'components/Fmk';
+import {FmkComponent} from 'components/FmkComponent';
 
-export class FmkCtl extends Component {
+export class FmkCtl extends FmkComponent {
   componentWillMount() {
+    super.componentWillMount();
     if (this.onShow) {
       this.onShow = this.onShow.bind(this);
     }

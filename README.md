@@ -1,8 +1,22 @@
-# 我们的文档就写这里吧
+# 语戏PC端读我文档
 
-基于 React、Amaze UI 组件、Webpack（with 'React Hot Loader'）、react-router、Facebook官方Flux实现等开源前端技术开发。
+基于 ReactJS、Amaze UI 组件、Webpack（with 'React Hot Loader'）、react-router、Facebook官方Flux改版、Electron实现等开源前端技术开发。
 
-**目前只包含WebApp客户端代码**。
+支持的浏览器版本：
+```
+IE：最低IE9，6、7、8均不支持，用户需要下载Desktop client
+Chrome
+Firefox
+Safari
+360浏览器
+QQ浏览器
+搜狗浏览器
+2345浏览器
+```
+
+**目前只包含WebApp客户端代码（3月10日第一版）。**
+
+**Desktop client计划3月20日发布预览版**
 
 ## 目录结构
 
@@ -11,6 +25,7 @@
 ```
 ./app                 // Web App的主目录
   ├── /css            // 三方库的CSS文件
+  ├── /devtests       // 独立组件开发测试文件存放目录
   ├── /fonts          // 三方库的CSS中用到的图标字体文件
   ├── /images         // 三方库的图片，也可以放项目的图片图标
   ├── /js             // 编译后的js文件，自动生成的
@@ -59,6 +74,11 @@ npm install
 npm start
 ```
 
+### 启动独立组件开发模式：
+```
+npm run cp
+```
+
 ### 静态打包和编译混淆
 ```
 npm run build
@@ -71,15 +91,57 @@ npm start
 
 ***自动更新服务开启不需要先编译，别浪费你的时间！！！***
 
+****
+
+## appconfig.js配置介绍：
+```javascript
+defaultDevServer: {
+  defaultIP: 'localhost', //默认开发服务地址
+  defaultPort: 3000,      //默认开发服务端口
+  apiHost: 'open.iciba.com',  //API主机名称和端口
+  apiAddress: 'http://open.iciba.com:80/', //API访问协议和主机以及端口，用于开发期代理访问后端API，解决开发期API跨域调用问题，要和上面地址对应
+  apiBashPath: '/dsapi/*',   //API访问路径，要和真实的地址一致
+  gatewayHost: 'Teedys-MacBook-Pro.local' //如果通过网关转内网，需要在这里配置网关域名或IP
+},
+alias: {
+  'AppCss': path.resolve(__dirname, 'src/css/app'),
+  ..........
+  ........
+  //这里配置各个模块的私有css用于模块import
+},
+entry: {
+  app: path.resolve(__dirname, 'src/main'),
+  .....
+  ......
+  //这里配置独立的入口js，一般来说，有几个独立HTML页面，就有几个入口
+}
+```
 ***
 
+*请大家把平时开发中碰到的问题和解决方案写到Keng.md中，便于后续开发和维护*
+
+***
+
+## 重要概念介绍
+
+1. Flux增强单向数据（动作）循环解释：
+由于采用了Flux架构设计思想，全部应用的数据都是单向流动，最终形成完整数据流动闭环。
+
+如下图：
+>  View --(dom event)--> Controller --(action)--> Store  
+>   ^                                               |
+>   |---------------------------------------------update
+>
+
+
 ## 开发期资源导航
-1. [图标库](http://fontawesome.io/icons/)
-2. [React(英文)）](https://facebook.github.io/react/)
-3. [React(中文)](http://reactjs.cn/react/docs/getting-started.html)
-4. [React Router](https://github.com/reactjs/react-router)
-5. [妹子UI](http://amazeui.org/react/components)
-6. [If else等控制标签的使用说明](https://www.npmjs.com/package/jsx-control-statements)
-7. [superagent(ajax)库使用教程(中文)](https://cnodejs.org/topic/5378720ed6e2d16149fa16bd)
-8. [N多React系列组件](https://js.coach/)
-9. [Web App solutions(中文)](https://github.com/teambition/webapp-solutions)
+
+> 1. [图标库](http://fontawesome.io/icons/)
+> 2. [React(英文)）](https://facebook.github.io/react/)
+> 3. [React(中文)](http://reactjs.cn/react/docs/getting-started.html)
+> 4. [React Router](https://github.com/reactjs/react-router)
+> 5. [妹子UI](http://amazeui.org/react/components)
+> 6. [If else等控制标签的使用说明](https://www.npmjs.com/package/jsx-control-statements)
+> 7. [superagent(ajax)库使用教程(中文)](https://cnodejs.org/topic/5378720ed6e2d16149fa16bd)
+> 8. [N多React系列组件](https://js.coach/)
+> 9. [Web App solutions(中文)](https://github.com/teambition/webapp-solutions)

@@ -2,9 +2,9 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
 import {Panel, Icon} from 'amazeui-react';
-import {Fmk} from 'components/Fmk';
+import {FmkComponent} from 'components/FmkComponent';
 
-export default class About extends Component {
+export default class About extends FmkComponent {
   render() {
     var panelHeader = (
       <Icon icon="child">关于这个Demo</Icon>

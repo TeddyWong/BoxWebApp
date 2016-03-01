@@ -5,7 +5,6 @@ import {
 import {
   Fmk
 } from 'components/Fmk';
-import request from 'superagent/lib/client';
 var moment = require('moment');
 
 export class NewsStore extends FmkStore {
@@ -17,15 +16,11 @@ export class NewsStore extends FmkStore {
   }
 
   $$ = (startingState, action) => {
-    request
-      .get('/dsapi/')
-      .query({
-        'date': this.mm.format("YYYY-MM-DD")
-      })
-      .set('Accept', 'application/json')
-      .end((err, res) => {
-        this.changeState(JSON.parse(res.text));
-      });
+    Fmk.get('/dsapi/', {
+      'date': this.mm.format("YYYY-MM-DD")
+    }, (res) => {
+      this.changeState(res);
+    });
   }
 
   $news$previous = (startingState, action) => {

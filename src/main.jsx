@@ -11,7 +11,7 @@ render((
       <Route path="news" component={require('react-router?name=NewsCtl!ctls/NewsCtl')}/>
       <Route path="about" component={require('react-router?name=About!pages/About')}/>
       <Route path="control_statement" component={require('react-router?name=ControlStatement!pages/ControlStatement')}/>
-      <Route path="*" component={require('react-router!pages/Welcome')}/>
+      <Route path="*" component={require('react-router?name=Welcome!pages/Welcome')}/>
     </Route>
   </Router>
 ), document.getElementById('app'));

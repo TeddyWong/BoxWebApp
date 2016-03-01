@@ -12,13 +12,14 @@ module.exports = {
     apiHost: 'open.iciba.com',
     apiAddress: 'http://open.iciba.com:80/',
     apiBashPath: '/dsapi/*',
-    gatewayHost: 'Teedys-MacBook-Pro.local'
+    gatewayHost: 'localhost'
   },
   alias: {
     'AppCss': path.resolve(__dirname, 'src/css/app')
   },
   entry: {
-    app: path.resolve(__dirname, 'src/main')
+    main: path.resolve(__dirname, 'src/main'),
+    index: path.resolve(__dirname, 'src/index')
   },
   getDevServer: function() {
     var interfaces = os.networkInterfaces();

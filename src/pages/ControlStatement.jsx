@@ -3,8 +3,9 @@ import React, {Component} from 'react';
 import {Link} from 'react-router';
 import {Panel, Icon} from 'amazeui-react';
 import {Fmk} from 'components/Fmk';
+import {FmkComponent} from 'components/FmkComponent';
 
-export default class ControlStatement extends Component {
+export default class ControlStatement extends FmkComponent {
   render() {
     var panelHeader = (
       <Icon icon="tags">扩展标签示例</Icon>
